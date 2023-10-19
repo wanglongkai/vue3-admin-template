@@ -20,9 +20,11 @@ export default defineConfig({
     }),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      dts: false,
     }),
     Components({
       resolvers: [ElementPlusResolver()],
+      dts: false,
     }),
     ElementPlus({}) // 该配置是为了解决elmessage之类通过 import { ElMessage } from "element-plus" 形式引入会覆盖按需引入，导致样式无效的问题
   ],
