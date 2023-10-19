@@ -27,3 +27,5 @@ export const flattenTreeToArray = (tree: any[], childrenKey = 'children') => {
   traverse(tree);
   return result;
 }
+
+export const getToken = () => window.localStorage.getItem('token');
