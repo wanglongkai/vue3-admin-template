@@ -1,5 +1,6 @@
-import { request } from '@/http/request'
 import { useFormData } from '@/hooks/useFormData'
+import { userLogin } from '@/api/user'
+import { useRouter } from "vue-router"
 
 export function useLoginFetch(){
   const {formData, formDataRef, formDataRules} = useFormData(
@@ -13,8 +14,13 @@ export function useLoginFetch(){
     }
   )
 
+  const router = useRouter()
   const onSubmitLogin = async () => {
-    console.log(`output->formData`,formData)
+    const res = await userLogin(formData);
+    if(res.code === 200){
+      localStorage.setItem('token', res.access_token);
+      router.replace('/')
+    }
   }
 
   return {
