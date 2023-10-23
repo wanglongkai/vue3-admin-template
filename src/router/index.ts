@@ -27,7 +27,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           svgIcon: "dashboard",
           roles: ["admin", "editor"], // 可以在根路由中设置角色
         }
-      }
+      },
     ]
   },
   {
@@ -88,6 +88,22 @@ export const constantRoutes: RouteRecordRaw[] = [
       }
     ]
   },
+  {
+    path: "/structure",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/structor/index.vue"),
+        name: "Structure",
+        meta: {
+          title: "响应解构",
+          roles: ["admin", "editor"], // 可以在根路由中设置角色
+        }
+      }
+    ]
+  },
+  
 ]
 
 /**
