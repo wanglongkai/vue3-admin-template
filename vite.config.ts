@@ -7,12 +7,21 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import svgLoader from "vite-svg-loader"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+     /** 将 SVG 静态图转化为 Vue 组件 */
+     svgLoader({ defaultImport: "url" }),
+     /** SVG */
+     createSvgIconsPlugin({
+       iconDirs: [path.resolve(process.cwd(), "src/icons/svg")],
+       symbolId: "icon-[dir]-[name]"
+     }),
     viteMockServe({
       mockPath: "./mock",//设置mock文件存储目录
       localEnabled: true,//设置是否启用本地mock文件
