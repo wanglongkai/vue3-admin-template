@@ -3,13 +3,10 @@ import { computed } from "vue"
 import { useAppStore } from "@/stores/app"
 import { useSettingsStore } from "@/stores/settings"
 import { AppMain, NavigationBar, Settings, Sidebar, TagsView, RightPanel } from "./components"
-import useResize from "./hooks/useResize"
+
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
-
-/** Layout 布局响应式 */
-useResize()
 
 /** 定义计算属性 layoutClasses，用于控制布局的类名 */
 const layoutClasses = computed(() => {

@@ -14,11 +14,12 @@ export function useLoginFetch(){
     }
   )
 
-  const router = useRouter()
+  const router = useRouter();
   const onSubmitLogin = async () => {
     const res = await userLogin(formData);
     if(res.code === 200){
       localStorage.setItem('token', res.access_token);
+      localStorage.setItem('userId', res.userId)
       router.replace('/')
     }
   }

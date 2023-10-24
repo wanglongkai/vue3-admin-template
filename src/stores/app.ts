@@ -1,7 +1,10 @@
-import { reactive, ref, watch } from "vue"
+import { reactive, watch, toRefs } from "vue"
 import { defineStore } from "pinia"
 import { getSidebarStatus, setSidebarStatus } from "@/utils/local-storage"
-import { DeviceEnum, SIDEBAR_OPENED, SIDEBAR_CLOSED } from "@/constants/app-key"
+import { SIDEBAR_OPENED, SIDEBAR_CLOSED } from "@/constants/app-key"
+import { getMenuPermissions } from '@/api/user'
+import { allRoutes, constantRoutes } from '@/router'
+import { type RouteRecordRaw } from 'vue-router';
 
 interface Sidebar {
   opened: boolean
@@ -19,15 +22,11 @@ export const useAppStore = defineStore("app", () => {
     opened: getSidebarStatus() !== SIDEBAR_CLOSED,
     withoutAnimation: false
   })
-  /** 设备类型 */
-  const device = ref<DeviceEnum>(DeviceEnum.Desktop)
-
   /** 监听侧边栏 opened 状态 */
   watch(
     () => sidebar.opened,
     (opened) => handleSidebarStatus(opened)
   )
-
   /** 切换侧边栏 */
   const toggleSidebar = (withoutAnimation: boolean) => {
     sidebar.opened = !sidebar.opened
@@ -38,10 +37,23 @@ export const useAppStore = defineStore("app", () => {
     sidebar.opened = false
     sidebar.withoutAnimation = withoutAnimation
   }
-  /** 切换设备类型 */
-  const toggleDevice = (value: DeviceEnum) => {
-    device.value = value
+
+  const app = reactive({
+    routes: [] as RouteRecordRaw[],
+  })
+
+  const generateRoutes = async (usrId) => {
+    const { data } = await getMenuPermissions(usrId);
+    const sidebarRoutes = filterAsyncRouter(allRoutes, data);
+    app.routes = constantRoutes.concat(sidebarRoutes);
+    return sidebarRoutes;
   }
 
-  return { device, sidebar, toggleSidebar, closeSidebar, toggleDevice }
+
+  return { sidebar, toggleSidebar, closeSidebar, generateRoutes, ...toRefs(app) }
 })
+
+function filterAsyncRouter(allRoutes, permissions){
+  // todo
+  return allRoutes
+}

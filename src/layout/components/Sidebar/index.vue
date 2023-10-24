@@ -3,7 +3,6 @@ import { computed } from "vue"
 import { useRoute } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useAppStore } from "@/stores/app"
-import { usePermissionStore } from "@/stores/permission"
 import { useSettingsStore } from "@/stores/settings"
 import SidebarItem from "./SidebarItem.vue"
 import SidebarLogo from "./SidebarLogo.vue"
@@ -15,18 +14,9 @@ const v3SidebarMenuActiveTextColor = getCssVariableValue("--v3-sidebar-menu-acti
 
 const route = useRoute()
 const appStore = useAppStore()
-const permissionStore = usePermissionStore()
 const settingsStore = useSettingsStore()
 
 const { showSidebarLogo } = storeToRefs(settingsStore)
-
-const activeMenu = computed(() => {
-  const {
-    meta: { activeMenu },
-    path
-  } = route
-  return activeMenu ? activeMenu : path
-})
 
 const isCollapse = computed(() => !appStore.sidebar.opened)
 </script>
@@ -36,7 +26,7 @@ const isCollapse = computed(() => !appStore.sidebar.opened)
     <SidebarLogo v-if="showSidebarLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="activeMenu"
+        :default-active="route.path"
         :collapse="isCollapse"
         :background-color="v3SidebarMenuBgColor"
         :text-color="v3SidebarMenuTextColor"
@@ -46,7 +36,7 @@ const isCollapse = computed(() => !appStore.sidebar.opened)
         mode="vertical"
       >
         <SidebarItem
-          v-for="route in permissionStore.routes"
+          v-for="route in appStore.routes"
           :key="route.path"
           :item="route"
           :base-path="route.path"

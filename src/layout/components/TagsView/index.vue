@@ -2,16 +2,16 @@
 import { getCurrentInstance, onMounted, ref, watch } from "vue"
 import { type RouteRecordRaw, RouterLink, useRoute, useRouter } from "vue-router"
 import { type TagView, useTagsViewStore } from "@/stores/tags-view"
-import { usePermissionStore } from "@/stores/permission"
 import ScrollPane from "./ScrollPane.vue"
 import path from "path-browserify"
 import { Close } from "@element-plus/icons-vue"
+import { useAppStore } from "@/stores/app"
 
 const instance = getCurrentInstance()
 const router = useRouter()
 const route = useRoute()
 const tagsViewStore = useTagsViewStore()
-const permissionStore = usePermissionStore()
+const appStore = useAppStore()
 
 /** 标签页组件元素的引用数组 */
 const tagRefs = ref<InstanceType<typeof RouterLink>[]>([])
@@ -60,7 +60,7 @@ const filterAffixTags = (routes: RouteRecordRaw[], basePath = "/") => {
 
 /** 初始化标签页 */
 const initTags = () => {
-  affixTags = filterAffixTags(permissionStore.routes)
+  affixTags = filterAffixTags(appStore.routes)
   for (const tag of affixTags) {
     // 必须含有 name 属性
     tag.name && tagsViewStore.addVisitedView(tag)

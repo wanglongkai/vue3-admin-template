@@ -30,6 +30,14 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ]
   },
+  
+]
+
+/**
+ * 动态路由
+ * 根据菜单权限过滤出当前用户可用路由
+ */
+export const allRoutes: RouteRecordRaw[] = [
   {
     path: "/menu",
     component: Layout,
@@ -103,15 +111,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       }
     ]
   },
-  
 ]
-
-/**
- * 动态路由
- * 用来放置有权限 (Roles 属性) 的路由
- * 必须带有 Name 属性
- */
-export const asyncRoutes: RouteRecordRaw[] = []
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

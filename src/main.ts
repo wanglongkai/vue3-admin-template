@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import piniaPersist from 'pinia-plugin-persist'
 
 import "@/router/permission"
 import "normalize.css"
@@ -15,7 +16,10 @@ const app = createApp(App)
 /** 加载全局 SVG */
 loadSvg(app)
 
-app.use(createPinia())
+const pinia = createPinia()
+pinia.use(piniaPersist)
+
+app.use(pinia)
 app.use(router)
 
 app.mount('#app')

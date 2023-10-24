@@ -8,7 +8,8 @@ export default [
         return {
           code: 200,
           message: "success",
-          access_token: 'testmockaccesstoken2023'
+          access_token: 'testmockaccesstoken2023',
+          userId: 1
         };
       }else{
         return {
