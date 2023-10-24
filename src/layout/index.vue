@@ -53,11 +53,11 @@ const fixedHeader = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/mixins.scss";
+@use "@/style/mixins.scss";
 $transition-time: 0.35s;
 
 .app-wrapper {
-  @include clearfix;
+  @include mixins.clearfix;
   position: relative;
   width: 100%;
 }

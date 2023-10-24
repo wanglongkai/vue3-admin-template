@@ -40,7 +40,7 @@ const switchSettings = {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/mixins.scss";
+@use "@/style/mixins.scss";
 
 .setting-container {
   padding: 20px;
@@ -51,7 +51,7 @@ const switchSettings = {
     justify-content: space-between;
     align-items: center;
     .setting-name {
-      @include ellipsis;
+      @include mixins.ellipsis;
     }
   }
 }

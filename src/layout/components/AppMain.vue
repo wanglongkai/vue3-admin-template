@@ -27,7 +27,7 @@ const key = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "@/style/mixins.scss";
+@use "@/style/mixins.scss";
 
 .app-main {
   min-height: calc(100vh - var(--v3-navigationbar-height));
@@ -40,7 +40,7 @@ const key = computed(() => {
 .app-scrollbar {
   height: 100%;
   overflow: auto;
-  @include scrollbar;
+  @include mixins.scrollbar;
 }
 
 .fixed-header + .app-main {
