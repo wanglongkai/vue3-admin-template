@@ -78,7 +78,7 @@ const addTags = () => {
 /** 刷新当前正在右键操作的标签页 */
 const refreshSelectedTag = (view: TagView) => {
   tagsViewStore.delCachedView(view)
-  router.replace({ path: "/redirect" + view.path, query: view.query })
+  router.replace({ path: view.path, query: view.query })
 }
 
 /** 关闭当前正在右键操作的标签页 */
@@ -114,9 +114,9 @@ const toLastView = (visitedViews: TagView[], view: TagView) => {
     router.push(fullPath)
   } else {
     // 如果 TagsView 全部被关闭了，则默认重定向到主页
-    if (view.name === "Dashboard") {
+    if (view.name === "Home") {
       // 重新加载主页
-      router.push({ path: "/redirect" + view.path, query: view.query })
+      router.push({ path: view.path, query: view.query })
     } else {
       router.push("/")
     }

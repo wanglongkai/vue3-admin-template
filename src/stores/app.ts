@@ -3,7 +3,7 @@ import { defineStore } from "pinia"
 import { getSidebarStatus, setSidebarStatus } from "@/utils/local-storage"
 import { SIDEBAR_OPENED, SIDEBAR_CLOSED } from "@/constants/app-key"
 import { getMenuPermissions } from '@/api/user'
-import { allRoutes, constantRoutes } from '@/router'
+import { allDynamicRoutes, constantRoutes } from '@/router'
 import { type RouteRecordRaw } from 'vue-router';
 
 interface Sidebar {
@@ -44,7 +44,7 @@ export const useAppStore = defineStore("app", () => {
 
   const generateRoutes = async (usrId) => {
     const { data } = await getMenuPermissions(usrId);
-    const sidebarRoutes = filterAsyncRouter(allRoutes, data);
+    const sidebarRoutes = filterAsyncRouter(allDynamicRoutes, data);
     app.routes = constantRoutes.concat(sidebarRoutes);
     return sidebarRoutes;
   }
@@ -53,7 +53,16 @@ export const useAppStore = defineStore("app", () => {
   return { sidebar, toggleSidebar, closeSidebar, generateRoutes, ...toRefs(app) }
 })
 
-function filterAsyncRouter(allRoutes, permissions){
-  // todo
-  return allRoutes
+function filterAsyncRouter(allRoutes: RouteRecordRaw[], permissions: string[]){
+  const filteredRoutes: RouteRecordRaw[] = [];
+  allRoutes.forEach((route => {
+    if(route.children){
+     const childRoutes = filterAsyncRouter(route.children, permissions);
+     route.children = childRoutes;
+     filteredRoutes.push(route)
+    }else{
+      permissions.includes(route.name as string) && filteredRoutes.push(route);
+    }
+  }))
+  return filteredRoutes
 }

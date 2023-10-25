@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const getUserInfo = async userId => {
     const info = await queryUserInfo(userId);
     setUserInfo(info.data);
+    return info;
   }
 
   return {

@@ -12,7 +12,14 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: '/404',
     component: () => import('~/views/404.vue'),
     alias: "/:pathMatch(.*)*"
-  },
+  }, 
+]
+
+/**
+ * 所有动态路由
+ * 根据菜单权限过滤出当前用户可用路由
+ */
+export const allDynamicRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     component: Layout,
@@ -25,19 +32,10 @@ export const constantRoutes: RouteRecordRaw[] = [
         meta: {
           title: "首页",
           svgIcon: "dashboard",
-          roles: ["admin", "editor"], // 可以在根路由中设置角色
         }
       },
     ]
   },
-  
-]
-
-/**
- * 动态路由
- * 根据菜单权限过滤出当前用户可用路由
- */
-export const allRoutes: RouteRecordRaw[] = [
   {
     path: "/menu",
     component: Layout,
@@ -50,7 +48,6 @@ export const allRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: "menu1",
-        component: () => import("@/views/folder/index.vue"),
         redirect: "/menu/menu1/menu1-1",
         name: "Menu1",
         meta: {
@@ -67,7 +64,6 @@ export const allRoutes: RouteRecordRaw[] = [
           },
           {
             path: "menu1-2",
-            component: () => import("@/views/folder4/index.vue"),
             redirect: "/menu/menu1/menu1-2/menu1-2-1",
             name: "Menu1-2",
             meta: {
@@ -80,6 +76,14 @@ export const allRoutes: RouteRecordRaw[] = [
                 name: "Menu1-2-1",
                 meta: {
                   title: "menu1-2-1"
+                }
+              },
+              {
+                path: "menu1-2-2",
+                component: () => import("@/views/folder3/index.vue"),
+                name: "Menu1-2-2",
+                meta: {
+                  title: "menu1-2-2"
                 }
               },
             ]
@@ -106,7 +110,7 @@ export const allRoutes: RouteRecordRaw[] = [
         name: "Structure",
         meta: {
           title: "响应解构",
-          roles: ["admin", "editor"], // 可以在根路由中设置角色
+          svgIcon: 'lock'
         }
       }
     ]

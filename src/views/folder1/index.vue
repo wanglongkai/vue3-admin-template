@@ -1,6 +1,6 @@
 <template>
   <div class='app-container'>
-    二级目录
+    folder1
   </div>
 </template>
 

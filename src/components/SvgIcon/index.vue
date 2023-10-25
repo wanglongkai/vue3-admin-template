@@ -1,30 +1,28 @@
 <script lang="ts" setup>
-import { computed } from "vue"
+import { computed, withDefaults } from "vue"
 
-const props = defineProps({
-  prefix: {
-    type: String,
-    default: "icon"
-  },
-  name: {
-    type: String,
-    required: true
-  }
+const props = withDefaults(defineProps<{
+  name: string,
+  color?: string,
+  width?: string,
+  height?: string
+}>(), {
+  color: 'currentColor',
+  width: '1em',
+  height: '1em'
 })
 
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const symbolId = computed(() => `#icon-svg-${props.name}`)
 </script>
 
 <template>
-  <svg class="svg-icon" aria-hidden="true">
-    <use :href="symbolId" />
+  <svg class="svg-icon" aria-hidden="true" :width="props.width" :height="props.height">
+    <use :href="symbolId" :fill="props.color"/>
   </svg>
 </template>
 
 <style lang="scss" scoped>
 .svg-icon {
-  width: 1em;
-  height: 1em;
   fill: currentColor;
   overflow: hidden;
 }

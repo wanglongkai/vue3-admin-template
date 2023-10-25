@@ -20,7 +20,7 @@ export default defineConfig({
      /** SVG */
      createSvgIconsPlugin({
        iconDirs: [path.resolve(process.cwd(), "src/icons/svg")],
-       symbolId: "icon-[dir]-[name]"
+       symbolId: "icon-svg-[name]"
      }),
     viteMockServe({
       mockPath: "./mock",//设置mock文件存储目录

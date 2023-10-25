@@ -1,13 +1,13 @@
 // 全局 CSS 变量
-@import "./variables.css";
+@use "./variables.css";
 // Transition
-@import "./transition.scss";
+@use "./transition.scss";
 // Element Plus
-@import "./element-plus.scss";
+@use "./element-plus.scss";
 // Vxe Table
-@import "./vxe-table.scss";
+@use "./vxe-table.scss";
 // mixin
-@import "./mixins.scss";
+@use "./mixins.scss";
 
 // 业务页面几乎都应该在根元素上挂载 class="app-container"，以保持页面美观
 .app-container {
@@ -25,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
     sans-serif;
-  @include scrollbar();
+  @include mixins.scrollbar();
 }
 
 #app {

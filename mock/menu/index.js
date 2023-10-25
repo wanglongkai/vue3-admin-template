@@ -18,7 +18,7 @@ export default [
       return  {
         code: 200,
         message: "success",
-        data: ['Home','Structure', 'Menu', 'Menu1', 'Menu1-1', 'Menu1-2', 'Menu1-2-1', 'Menu2']
+        data: ['Home','Structure', 'Menu', 'Menu1', 'Menu1-1', 'Menu1-2', 'Menu1-2-1', 'Menu2', 'Menu1-2-2']
       };
     }
   }
