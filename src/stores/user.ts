@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { getUserInfo as queryUserInfo } from '@/api/user'
 
 export const useUserStore = defineStore('user', () => {
@@ -15,9 +16,16 @@ export const useUserStore = defineStore('user', () => {
     return info;
   }
 
+  const router = useRouter()
+  const logout = async () => {
+    localStorage.clear();
+    router.replace("/login")
+  }
+
   return {
     userInfo,
     setUserInfo,
-    getUserInfo
+    getUserInfo,
+    logout
   }
 })

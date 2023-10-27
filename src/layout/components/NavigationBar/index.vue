@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useRouter } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useAppStore } from "@/stores/app"
 import { useSettingsStore } from "@/stores/settings"
@@ -10,7 +9,6 @@ import Hamburger from "../Hamburger/index.vue"
 import Screenfull from "@/components/Screenfull/index.vue"
 import Notify from "@/components/Notify/index.vue"
 
-const router = useRouter()
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
 const userStore = useUserStore()
@@ -23,9 +21,8 @@ const toggleSidebar = () => {
   appStore.toggleSidebar(false)
 }
 /** 登出 */
-const logout = () => {
-  // userStore.logout()
-  router.push("/login")
+const logout = async () => {
+  await userStore.logout()
 }
 </script>
 

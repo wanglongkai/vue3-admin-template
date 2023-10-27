@@ -52,7 +52,7 @@ const {formData, formDataRef, formDataRules, onSubmitLogin} = useLoginFetch();
     background-color: #fff;
     overflow: hidden;
     .content {
-      padding: 20px 50px 50px 50px;
+      padding: 50px;
       .el-button {
         width: 100%;
         margin-top: 10px;
