@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* flex+margin实现水平垂直居中 */
+    .box1{
+      width: 300px;
+      height: 200px;
+      border: 1px solid red;
+      display: flex;
+    }
+    .son1{
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      margin: auto;
+    }
+
+    /* flex+margin实现space-around */
+    .box2{
+      width: 900px;
+      height: 300px;
+      border: 1px solid red;
+      display: flex;
+    }
+    .son2{
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      margin: auto;
+    }
+
+    /* 使用 margin-left: auto 实现不规则两端对齐布局 */
+    .box3{
+      width: 900px;
+      height: 100px;
+      border: 1px solid red;
+      display: flex;
+    }
+    .son3{
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      margin: auto 10px; /*让上下居中*/
+    }
+    .right{
+      margin-left: auto;
+    }
+
+    /* flex+margin实现多行space-around, 且最后一行显示合理 */
+    .box4{
+      width: 900px;
+      border: 1px solid red;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .son4{
+      width: 200px;
+      height: 100px;
+      background-color: red;
+      /* 此时需要自己手动计算每个item所需要分得的margin数值 */
+      /* 父盒子宽度减去4个item元素的总宽度后，除以4则是每个item应得的margin值，再除以2才是左右margin值 */
+      margin: 10px calc((100% - 200px*4) / 4 / 2)
+    }
+  </style>
+</head>
+<body>
+  <h3>flex+margin实现水平垂直居中</h3>
+  <div class="box1">
+    <div class="son1"></div>
+  </div>
+
+  <h3>flex+margin实现space-around</h3>
+  <div class="box2">
+    <div class="son2"></div>
+    <div class="son2"></div>
+    <div class="son2"></div>
+    <div class="son2"></div>
+    <div class="son2"></div>
+    <div class="son2"></div>
+  </div>
+
+  <h3>使用 margin-left: auto 实现不规则两端对齐布局1</h3>
+  <div class="box3">
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3 right"></div>
+  </div>
+  <div class="box3">
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3 right"></div>
+    <div class="son3 "></div>
+  </div>
+  <div class="box3">
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3 right"></div>
+    <div class="son3 right"></div>
+  </div>
+  <div class="box3">
+    <div class="son3 right"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+    <div class="son3"></div>
+  </div>
+
+  <h3>flex+margin实现多行space-around, 且最后一行显示合理</h3>
+  <div class="box4">
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+    <div class="son4"></div>
+  </div>
+</body>
+</html>
