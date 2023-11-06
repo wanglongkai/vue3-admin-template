@@ -10,8 +10,10 @@ import "normalize.css"
 import './style/index.scss';
 
 import { loadSvg } from "@/icons"
+import globalData from './config/global'
 
 const app = createApp(App)
+app.use(globalData)
 
 /** 加载全局 SVG */
 loadSvg(app)

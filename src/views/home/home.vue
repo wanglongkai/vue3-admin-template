@@ -3,6 +3,7 @@
     {{ count }} <el-button @click="count++">++</el-button>
     <Child :count="count"/>
     <el-button @click="changeRoute">卸载</el-button>
+    {{ globalData?.msg }}
   </div>
 </template>
 
@@ -11,10 +12,10 @@ import { getUserInfo } from '@/api/user'
 import Child from './child.vue'
 import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 import { useRouter } from 'vue-router'
-
+import useGlobalData from '@/hooks/useGlobalData'
 
 const router = useRouter();
-
+const globalData = useGlobalData();
 const changeRoute = () => {
   router.push('/sss')
 }
