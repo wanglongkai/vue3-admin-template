@@ -1,14 +1,20 @@
 <template>
   <div class='app-container'>
-    <el-button plain @click="open">Common Tsx</el-button>
+    <el-button plain @click="open">
+      <InsertTsx :tsx="text"/>
+    </el-button>
   </div>
 </template>
 
 <script lang='tsx' setup>
 import { ElMessageBox} from 'element-plus'
 import { ref } from 'vue';
+import InsertTsx from './insertTsx';
 
 const num = ref(0);
+
+const buttonText = '点我';
+const text = <span>{buttonText}</span>;
 
 const open = () => {
   ElMessageBox({
