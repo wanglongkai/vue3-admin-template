@@ -39,6 +39,7 @@ export default defineConfig({
   ],
   server: {
     open: true,
+    host: '0.0.0.0' // 解决vite项目无法使用IP访问
   },
   resolve: {
     alias: {
