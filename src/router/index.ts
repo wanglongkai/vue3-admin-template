@@ -115,6 +115,21 @@ export const allDynamicRoutes: RouteRecordRaw[] = [
       }
     ]
   },
+  {
+    path: "/deferrender",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/deferRender/deferRender.vue"),
+        name: "DeferRender",
+        meta: {
+          title: "分帧渲染",
+          svgIcon: 'lock'
+        }
+      }
+    ]
+  },
 ]
 
 const router = createRouter({
