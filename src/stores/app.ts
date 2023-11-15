@@ -58,8 +58,10 @@ function filterAsyncRouter(allRoutes: RouteRecordRaw[], permissions: string[]){
   allRoutes.forEach((route => {
     if(route.children){
      const childRoutes = filterAsyncRouter(route.children, permissions);
-     route.children = childRoutes;
-     filteredRoutes.push(route)
+     if(childRoutes.length){
+      route.children = childRoutes;
+      filteredRoutes.push(route)
+     }
     }else{
       permissions.includes(route.name as string) && filteredRoutes.push(route);
     }

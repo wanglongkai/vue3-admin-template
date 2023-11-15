@@ -130,6 +130,21 @@ export const allDynamicRoutes: RouteRecordRaw[] = [
       }
     ]
   },
+  {
+    path: "/grid",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/grid/grid.vue"),
+        name: "Grid",
+        meta: {
+          title: "Grid布局",
+          svgIcon: 'lock'
+        }
+      }
+    ]
+  },
 ]
 
 const router = createRouter({
