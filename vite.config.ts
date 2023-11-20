@@ -38,6 +38,7 @@ export default defineConfig({
     ElementPlus({}) // 该配置是为了解决elmessage之类通过 import { ElMessage } from "element-plus" 形式引入会覆盖按需引入，导致样式无效的问题
   ],
   server: {
+    port: 52347,
     open: true,
     host: '0.0.0.0' // 解决vite项目无法使用IP访问
   },
