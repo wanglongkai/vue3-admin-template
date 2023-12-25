@@ -59,7 +59,7 @@ export const allDynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/folder1/index.vue"),
             name: "Menu1-1",
             meta: {
-              title: "menu1-1"
+              title: "InsertJsx"
             }
           },
           {
