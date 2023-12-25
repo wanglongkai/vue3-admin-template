@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     <el-button plain @click="open">
-      <InsertTsx :tsx="text"/>
+      <InsertTsx :tsx="text('wlk')"/>
     </el-button>
   </div>
 </template>
@@ -13,8 +13,9 @@ import InsertTsx from './insertTsx';
 
 const num = ref(0);
 
-const buttonText = '点我';
-const text = <span>{buttonText}</span>;
+const text = (name) => {
+  return <span>{name}</span>
+};
 
 const open = () => {
   ElMessageBox({
