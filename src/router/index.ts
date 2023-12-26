@@ -75,15 +75,15 @@ export const allDynamicRoutes: RouteRecordRaw[] = [
                 component: () => import("@/views/folder3/index.vue"),
                 name: "Menu1-2-1",
                 meta: {
-                  title: "menu1-2-1"
+                  title: "folder3"
                 }
               },
               {
                 path: "menu1-2-2",
-                component: () => import("@/views/folder3/index.vue"),
+                component: () => import("@/views/folder4/index.vue"),
                 name: "Menu1-2-2",
                 meta: {
-                  title: "menu1-2-2"
+                  title: "folder4"
                 }
               },
             ]
