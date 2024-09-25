@@ -5,11 +5,11 @@ import App from './App.vue'
 import router from './router'
 import piniaPersist from 'pinia-plugin-persist'
 
-import "@/router/permission"
-import "normalize.css"
-import './style/index.scss';
+import '@/router/permission'
+import 'normalize.css'
+import './style/index.scss'
 
-import { loadSvg } from "@/icons"
+import { loadSvg } from '@/icons'
 import globalData from './config/global'
 
 const app = createApp(App)

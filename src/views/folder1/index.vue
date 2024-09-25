@@ -1,13 +1,13 @@
 <template>
   <div class='app-container'>
     <el-button plain @click="open">
-      <InsertTsx :tsx="text('wlk')"/>
+      <InsertTsx :tsx="text('wlk')" />
     </el-button>
   </div>
 </template>
 
 <script lang='tsx' setup>
-import { ElMessageBox} from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 import { ref } from 'vue';
 import InsertTsx from './insertTsx';
 
@@ -20,12 +20,11 @@ const text = (name) => {
 const open = () => {
   ElMessageBox({
     title: 'Message',
-    message:() => <p>我是一段tsx-- <el-button onClick={() => num.value++}>{ num.value }</el-button></p>,
-  }).catch(err=> {
+    message: () => <p>我是一段tsx-- <el-button onClick={() => num.value++}>{num.value}</el-button></p>,
+  }).catch(err => {
     console.log(err, 19)
   })
 }
 </script>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang='scss'></style>

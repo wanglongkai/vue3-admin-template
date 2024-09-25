@@ -1,7 +1,7 @@
 <template>
   <div class='app-container'>
     {{ count }} <el-button @click="count++">++</el-button>
-    <Child :count="count"/>
+    <Child :count="count" />
     <el-button @click="changeRoute">卸载</el-button>
     {{ globalData?.msg }}
   </div>
@@ -10,19 +10,19 @@
 <script lang='ts' setup>
 import { getUserInfo } from '@/api/user'
 import Child from './child.vue'
-import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useGlobalData from '@/hooks/useGlobalData'
 
-const router = useRouter();
-const globalData = useGlobalData();
+const router = useRouter()
+const globalData = useGlobalData()
 const changeRoute = () => {
   router.push('/sss')
 }
 
-getUserInfo(1);
+getUserInfo(1)
 
-const count = ref(0);
+const count = ref(0)
 console.log('父组件setup')
 onBeforeMount(() => {
   console.log('父组件onBeforeMount')
@@ -47,4 +47,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang='scss'>
+:deep(.el-button) {
+  color: blue;
+}
 </style>

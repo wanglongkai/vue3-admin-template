@@ -47,7 +47,7 @@ import ElementPlus from 'unplugin-element-plus/vite'
 **使用建议：** 网络请求时url前缀用`/mock`来进行区分是否走mock接口，不建议统一启用或禁用mock服务。
 
 ## SvgIcon组件
-1. 安装依赖`pnpm i createSvgIconsPlugin`
+1. 安装依赖`pnpm i vite-plugin-svg-icons`
 2. 配置`vite.config.ts`
   ```js
   import { createSvgIconsPlugin } from "vite-plugin-svg-icons"

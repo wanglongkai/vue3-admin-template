@@ -5,7 +5,7 @@
 </template>
 
 <script lang='ts' setup>
-import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated } from 'vue';
+import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated } from 'vue'
 defineProps(['count'])
 
 console.log('子组件setup')
@@ -29,5 +29,4 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang='scss'></style>
