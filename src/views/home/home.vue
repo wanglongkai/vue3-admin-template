@@ -8,6 +8,7 @@
 </template>
 
 <script lang='ts' setup>
+
 import { getUserInfo } from '@/api/user'
 import Child from './child.vue'
 import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue'
@@ -47,7 +48,9 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang='scss'>
-:deep(.el-button) {
-  color: blue;
+.app-container {
+  width: 400px;
+  height: 400px;
+  background-color: pink;
 }
 </style>

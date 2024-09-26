@@ -1,5 +1,5 @@
 <template>
-  <div class='app-container'>
+  <div class="app-container">
     子组件{{ count }}
   </div>
 </template>
@@ -29,4 +29,9 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped lang='scss'></style>
+<style scoped lang='scss'>
+// 子组件的根元素相当于父元素的子元素，在scoped中也会有样式污染
+.app-container {
+  align-content: center; // 注意和flex布局中的align-items何align-content区分
+}
+</style>
