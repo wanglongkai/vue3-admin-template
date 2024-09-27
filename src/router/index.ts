@@ -1,18 +1,18 @@
-import { type RouteRecordRaw, createRouter, createWebHistory } from "vue-router"
+import { type RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import('@/layout/index.vue')
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('~/views/login/login.vue')
+    component: () => import('~/views/login/login.vue'),
   },
   {
     path: '/404',
     component: () => import('~/views/404.vue'),
-    alias: "/:pathMatch(.*)*"
-  }, 
+    alias: '/:pathMatch(.*)*',
+  },
 ]
 
 /**
@@ -21,137 +21,150 @@ export const constantRoutes: RouteRecordRaw[] = [
  */
 export const allDynamicRoutes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: '/',
     component: Layout,
-    redirect: "/home",
+    redirect: '/home',
     children: [
       {
-        path: "home",
-        component: () => import("@/views/home/home.vue"),
-        name: "Home",
+        path: 'home',
+        component: () => import('@/views/home/home.vue'),
+        name: 'Home',
         meta: {
-          title: "首页",
-          svgIcon: "dashboard",
-        }
+          title: '首页',
+          svgIcon: 'dashboard',
+        },
       },
-    ]
+    ],
   },
   {
-    path: "/menu",
+    path: '/menu',
     component: Layout,
-    redirect: "/menu/menu1",
-    name: "Menu",
+    redirect: '/menu/menu1',
+    name: 'Menu',
     meta: {
-      title: "多级菜单",
-      svgIcon: "menu"
+      title: '多级菜单',
+      svgIcon: 'menu',
     },
     children: [
       {
-        path: "menu1",
-        redirect: "/menu/menu1/menu1-1",
-        name: "Menu1",
+        path: 'menu1',
+        redirect: '/menu/menu1/menu1-1',
+        name: 'Menu1',
         meta: {
-          title: "menu1"
+          title: 'menu1',
         },
         children: [
           {
-            path: "menu1-1",
-            component: () => import("@/views/folder1/index.vue"),
-            name: "Menu1-1",
+            path: 'menu1-1',
+            component: () => import('@/views/folder1/index.vue'),
+            name: 'Menu1-1',
             meta: {
-              title: "InsertJsx"
-            }
+              title: 'InsertJsx',
+            },
           },
           {
-            path: "menu1-2",
-            redirect: "/menu/menu1/menu1-2/menu1-2-1",
-            name: "Menu1-2",
+            path: 'menu1-2',
+            redirect: '/menu/menu1/menu1-2/menu1-2-1',
+            name: 'Menu1-2',
             meta: {
-              title: "menu1-2"
+              title: 'menu1-2',
             },
             children: [
               {
-                path: "menu1-2-1",
-                component: () => import("@/views/folder3/index.vue"),
-                name: "Menu1-2-1",
+                path: 'menu1-2-1',
+                component: () => import('@/views/folder3/index.vue'),
+                name: 'Menu1-2-1',
                 meta: {
-                  title: "folder3"
-                }
+                  title: 'folder3',
+                },
               },
               {
-                path: "menu1-2-2",
-                component: () => import("@/views/folder4/index.vue"),
-                name: "Menu1-2-2",
+                path: 'menu1-2-2',
+                component: () => import('@/views/folder4/index.vue'),
+                name: 'Menu1-2-2',
                 meta: {
-                  title: "folder4"
-                }
+                  title: 'folder4',
+                },
               },
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
       {
-        path: "menu2",
-        component: () => import("@/views/folder5/index.vue"),
-        name: "Menu2",
+        path: 'menu2',
+        component: () => import('@/views/folder5/index.vue'),
+        name: 'Menu2',
         meta: {
-          title: "menu2"
-        }
-      }
-    ]
+          title: 'menu2',
+        },
+      },
+    ],
   },
   {
-    path: "/structure",
+    path: '/structure',
     component: Layout,
     children: [
       {
-        path: "",
-        component: () => import("@/views/structor/index.vue"),
-        name: "Structure",
+        path: '',
+        component: () => import('@/views/structor/index.vue'),
+        name: 'Structure',
         meta: {
-          title: "响应解构",
-          svgIcon: 'lock'
-        }
-      }
-    ]
+          title: '响应解构',
+          svgIcon: 'lock',
+        },
+      },
+    ],
   },
   {
-    path: "/deferrender",
+    path: '/deferrender',
     component: Layout,
     children: [
       {
-        path: "",
-        component: () => import("@/views/deferRender/deferRender.vue"),
-        name: "DeferRender",
+        path: '',
+        component: () => import('@/views/deferRender/deferRender.vue'),
+        name: 'DeferRender',
         meta: {
-          title: "分帧渲染",
-          svgIcon: 'lock'
-        }
-      }
-    ]
+          title: '分帧渲染',
+          svgIcon: 'lock',
+        },
+      },
+    ],
   },
   {
-    path: "/grid",
+    path: '/grid',
     component: Layout,
     children: [
       {
-        path: "",
-        component: () => import("@/views/grid/grid.vue"),
-        name: "Grid",
+        path: '',
+        component: () => import('@/views/grid/grid.vue'),
+        name: 'Grid',
         meta: {
-          title: "Grid布局",
-          svgIcon: 'lock'
-        }
-      }
-    ]
+          title: 'Grid布局',
+          svgIcon: 'lock',
+        },
+      },
+    ],
+  },
+  {
+    path: '/asr',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/realtimeASR/index.vue'),
+        name: 'ASR',
+        meta: {
+          title: '实时语音转写',
+          svgIcon: 'lock',
+        },
+      },
+    ],
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: constantRoutes
+  routes: constantRoutes,
 })
-
-
 
 export default router
