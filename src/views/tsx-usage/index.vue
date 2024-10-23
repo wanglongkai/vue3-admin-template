@@ -9,7 +9,7 @@
   </div>
 </template>
 <script lang="tsx" setup>
-import { ref, h } from 'vue'
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useCssModule } from 'vue'
 const count = ref(0)
