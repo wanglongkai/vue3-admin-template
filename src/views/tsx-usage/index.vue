@@ -4,6 +4,7 @@
     {{ count }}
     <el-button @click="count++">+</el-button>
     <el-button :plain="true" @click="openVn">VNode</el-button>
+    <component :is="render()" />
   </div>
 </template>
 <script lang="tsx" setup>
@@ -12,6 +13,8 @@ import { ElMessage } from 'element-plus'
 import { useCssModule } from 'vue'
 const count = ref(0)
 const styles = useCssModule()
+
+const render = () => <div class={styles.istyle}>this is tsx content</div>
 
 const openVn = () => {
   ElMessage({
