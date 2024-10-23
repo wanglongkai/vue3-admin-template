@@ -160,6 +160,21 @@ export const allDynamicRoutes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/tsx',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/tsx-usage/index.vue'),
+        name: 'TSX',
+        meta: {
+          title: 'TSX',
+          svgIcon: 'lock',
+        },
+      },
+    ],
+  },
 ]
 
 const router = createRouter({

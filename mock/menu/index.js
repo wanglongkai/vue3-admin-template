@@ -31,6 +31,7 @@ export default [
           'DeferRender',
           'Grid',
           'ASR',
+          'TSX',
         ],
       }
     },
