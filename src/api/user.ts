@@ -51,6 +51,7 @@ export async function getMenuPermissions(userId) {
         'DeferRender',
         'Grid',
         'ASR',
+        'TSX',
       ],
     }
   }
